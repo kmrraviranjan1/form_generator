@@ -1,17 +1,18 @@
-import TextField from '@mui/material/TextField';
-import React from "react";
+import TextField from "@mui/material/TextField";
+import { useField } from "formik";
+const SimpleTextInput = ({ name, label, ...rest }, props) => {
+  const [field, meta] = useField(name);
 
-const SimpleTextInput = ({payload}) => {
   return (
-    <div>
-      <TextField
-        error={false}
-        id="outlined-error-helper-text"
-        label="Name "
-        // defaultValue="Hello World"
-        // helperText="Incorrect entry."
-      />
-    </div>
+    <TextField
+      fullWidth
+      label={label}
+      error={meta.touched && Boolean(meta.error)}
+      helperText={meta.touched && meta.error}
+      {...rest}
+      {...field}
+      {...props}
+    />
   );
 };
 

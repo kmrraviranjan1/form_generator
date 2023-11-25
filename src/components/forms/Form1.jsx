@@ -6,7 +6,8 @@ const Form1 = () => {
   const handleSubmit = (payload) => {
     console.log("handleSubmit payload: ", payload);
   };
-  const FormConfiguration = {
+
+  const formConfiguration = {
     title: "Simple Form",
     initialValues: { name: "", age: "", address: "" },
     validationSchema: Yup.object({
@@ -14,8 +15,14 @@ const Form1 = () => {
         .min(3, "Must be 3 letters or more")
         .max(15, "Must be 15 characters or less")
         .required("Required"),
-      age: Yup.number().max(99, "Must be 99years or less").required("Required"),
-      address: Yup.string().required("Required"),
+      age: Yup.number()
+        .min(1, "Min 1 years")
+        .max(99, "Must be 99years or less")
+        .required("Required"),
+      address: Yup.string()
+        .min(5, "Must be 5 letters or more")
+        .notOneOf(["patna", "mumbai"])
+        .required("Required"),
     }),
     items: [
       {
@@ -42,7 +49,7 @@ const Form1 = () => {
     submitForm: handleSubmit,
   };
 
-  return <SimpleForm formConfiguration={FormConfiguration} />;
+  return <SimpleForm formConfiguration={formConfiguration} />;
 };
 
 export default Form1;

@@ -1,17 +1,13 @@
 import Form1 from "./components/forms/Form1";
-import Container from "@mui/material/Container";
-import FormikForm1 from "./components/forms/FormikForm1";
-import FormikForm2 from "./components/forms/FormikForm2";
-import FormikForm3 from "./components/forms/FormikForm3";
-function App() {
-  return (
-    <>
-      <Form1 />;
-      {/* <FormikForm1/>
-      <FormikForm2/>
-      <FormikForm3/> */}
-    </>
-  );
-}
+
+import React from "react";
+import Form2 from "./components/forms/Form2";
+
+const App = () => (
+  <>
+    <Form1 />
+    <Form2 />
+  </>
+);
 
 export default App;
